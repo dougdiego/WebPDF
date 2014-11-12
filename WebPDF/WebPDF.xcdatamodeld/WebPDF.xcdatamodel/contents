@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="14B17" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Page">
+        <attribute name="created" optional="YES" attributeType="Date">
+            <userInfo/>
+        </attribute>
+        <attribute name="fileSize" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageFilename" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pageCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="pdfFilename" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updated" optional="YES" attributeType="Date" syncable="YES"/>
+        <userInfo/>
+    </entity>
+    <elements>
+        <element name="Page" positionX="261" positionY="189" width="128" height="150"/>
+    </elements>
+</model>
