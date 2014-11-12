@@ -1,0 +1,15 @@
+//
+//  PrefixHeader.pch
+//  WebPDF
+//
+//  Created by Doug Diego on 11/5/14.
+//  Copyright (c) 2014 Doug Diego. All rights reserved.
+//
+
+#ifndef WebPDF_PrefixHeader_pch
+#define WebPDF_PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif
