@@ -10,9 +10,10 @@
 #import "WebPDFUtils.h"
 #import "DDLogging.h"
 
-@interface DetailViewController ()
+@interface DetailViewController () <UIDocumentInteractionControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (nonatomic,strong) UIBarButtonItem *shareButton;
+@property (nonatomic, retain) UIDocumentInteractionController *documentInteractionController;
 @end
 
 @implementation DetailViewController
@@ -24,7 +25,7 @@
         _detailItem = newDetailItem;
         
         self.title = [self.detailItem valueForKey:@"title"];
-            
+        
         // Update the view.
         [self configureView];
     }
@@ -46,8 +47,8 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
     _shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
-                                                                                 target:self
-                                                                                 action:@selector(shareButtonPressed:)];
+                                                                 target:self
+                                                                 action:@selector(shareButtonPressed:)];
     self.navigationItem.rightBarButtonItem = _shareButton;
 }
 
@@ -61,11 +62,14 @@
 #pragma mark -
 #pragma mark Actions
 
--(void) shareButtonPressed:  (id) sender {
-    // DDLog("shareButtonPressed");
+-(void) shareButtonPressed:  (UIBarButtonItem*) sender {
+    //DDLog("shareButtonPressed: %@", sender);
+    
     
     NSString* fileName = [NSString stringWithFormat:@"%@.pdf", [self.detailItem valueForKey:@"pdfFilename"]];
     NSString* filePath = [WebPDFUtils pathWithFilename:fileName];
+    
+    /*
     NSArray *activityItems = @[[NSURL fileURLWithPath:filePath]];
     
     UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
@@ -79,6 +83,17 @@
     [self presentViewController:activityViewController
                        animated:YES
                      completion:nil];
+    */
+
+    
+    self.documentInteractionController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:filePath]];
+    
+    self.documentInteractionController.delegate = self;
+    
+    //self.documentInteractionController.name = @"Title";
+    self.documentInteractionController.UTI = @"com.adobe.pdf";
+    [self.documentInteractionController presentOptionsMenuFromBarButtonItem:sender animated:YES];
+    
 }
 
 -(void) backButtonPressed:  (id) sender {
@@ -94,12 +109,33 @@
 -(void)showPDFFile {
     NSString* fileName = [NSString stringWithFormat:@"%@.pdf", [self.detailItem valueForKey:@"pdfFilename"]];
     NSString* filePath = [WebPDFUtils pathWithFilename:fileName];
-
+    
     NSURL *url = [NSURL fileURLWithPath:filePath];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [_webView setScalesPageToFit:YES];
     [_webView loadRequest:request];
     
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark -
+#pragma mark UIDocumentInteractionControllerDelegate
+
+- (UIViewController *)documentInteractionControllerViewControllerForPreview:(UIDocumentInteractionController *)controller
+{
+    return self;
+}
+
+- (UIView *)documentInteractionControllerViewForPreview:(UIDocumentInteractionController *)controller
+{
+    return self.view;
+}
+
+- (CGRect)documentInteractionControllerRectForPreview:(UIDocumentInteractionController *)controller
+{
+    return self.view.frame;
 }
 
 @end
