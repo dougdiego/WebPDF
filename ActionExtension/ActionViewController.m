@@ -17,6 +17,7 @@
 @property(strong,nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *downloadBarButtonItem;
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 
 @end
 
@@ -77,7 +78,6 @@
     }
     
     self.downloadBarButtonItem.enabled = YES;
-    
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
@@ -87,14 +87,16 @@
 
 - (IBAction)downloadButtonPressed:(id)sender {
     
+    _webView.hidden = YES;
+    _statusLabel.text = @"Saving to WebPDF";
+    
     // Get Shared Directory
     NSURL *storeURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.WebPDF"];
     //NSLog(@"storeURL: %@", storeURL);
     
+    // Get title of document
     NSString * title = [_webView stringByEvaluatingJavaScriptFromString:@"document.title"];
-    
-    
-    //[SVProgressHUD show];
+    // TODO: what if title nil?
     
     NSData *pdfData =[_webView pdfWithSize:kPaperSizeA4];
     
@@ -113,9 +115,6 @@
         //NSLog(@"Writing file to: %@", imageURL );
         [pngData writeToURL:imageURL atomically:YES];
         
-        
-        //[SVProgressHUD showSuccessWithStatus:@"PDF Created"];
-        
         // Get current list of items from shared defaults
         NSUserDefaults *extensionUserDefaults = [[NSUserDefaults alloc]initWithSuiteName:@"group.WebPDF"];
         NSArray * currentItems = [extensionUserDefaults objectForKey:@"items"];
@@ -133,16 +132,19 @@
         [extensionUserDefaults setObject:items forKey:@"items"];
         [extensionUserDefaults synchronize];
         
+        _statusLabel.text = @"Saved to WebPDF";
         
     } else {
         NSLog(@"PDF couldnot be created");
-        //[SVProgressHUD showErrorWithStatus:@"Error creating PDF"];
+        _statusLabel.text = @"Unable to save to WebPDF";
     }
     
+    // Show confirmation message then close window
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.extensionContext completeRequestReturningItems:self.extensionContext.inputItems
+                                           completionHandler:nil];
+    });
     
-    
-    [self.extensionContext completeRequestReturningItems:self.extensionContext.inputItems
-                                       completionHandler:nil];
 }
 
 - (IBAction)done {

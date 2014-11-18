@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B23" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ObA-dk-sSI">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Image-->
@@ -33,6 +34,15 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rfz-6y-gIh">
+                                <rect key="frame" x="16" y="254" width="288" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="4oG-HM-fvY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LP8-Fb-cwv">
                                 <rect key="frame" x="0.0" y="64" width="320" height="464"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -44,8 +54,11 @@
                             <constraint firstItem="LP8-Fb-cwv" firstAttribute="trailing" secondItem="NOA-Dm-cuz" secondAttribute="trailing" id="C3B-cD-cpG"/>
                             <constraint firstItem="NOA-Dm-cuz" firstAttribute="leading" secondItem="zMn-AG-sqS" secondAttribute="leading" id="HxO-8t-aoh"/>
                             <constraint firstItem="LP8-Fb-cwv" firstAttribute="leading" secondItem="NOA-Dm-cuz" secondAttribute="leading" id="MnJ-pR-pLg"/>
+                            <constraint firstAttribute="centerY" secondItem="rfz-6y-gIh" secondAttribute="centerY" constant="-0.5" id="PkU-J3-rX5"/>
                             <constraint firstItem="LP8-Fb-cwv" firstAttribute="bottom" secondItem="n38-gi-rB5" secondAttribute="top" id="SkP-2D-hs5"/>
+                            <constraint firstItem="rfz-6y-gIh" firstAttribute="trailing" secondItem="zMn-AG-sqS" secondAttribute="trailingMargin" id="XZs-qW-rKz"/>
                             <constraint firstItem="LP8-Fb-cwv" firstAttribute="top" secondItem="NOA-Dm-cuz" secondAttribute="bottom" id="oow-Bp-IMG"/>
+                            <constraint firstItem="rfz-6y-gIh" firstAttribute="leading" secondItem="zMn-AG-sqS" secondAttribute="leadingMargin" id="wdF-W4-iQI"/>
                             <constraint firstItem="NOA-Dm-cuz" firstAttribute="top" secondItem="qkL-Od-lgU" secondAttribute="bottom" id="we0-1t-bgp"/>
                         </constraints>
                     </view>
@@ -53,6 +66,7 @@
                     <size key="freeformSize" width="320" height="528"/>
                     <connections>
                         <outlet property="downloadBarButtonItem" destination="DUr-Fu-zv8" id="PiB-ub-Rfj"/>
+                        <outlet property="statusLabel" destination="rfz-6y-gIh" id="xOr-dy-sfz"/>
                         <outlet property="view" destination="zMn-AG-sqS" id="Qma-de-2ek"/>
                         <outlet property="webView" destination="LP8-Fb-cwv" id="7zU-pw-MeM"/>
                     </connections>
@@ -64,7 +78,7 @@
     </scenes>
     <resources>
         <image name="navbar_close" width="22" height="22"/>
-        <image name="navbar_download" width="22" height="22"/>
+        <image name="navbar_download" width="25" height="25"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
