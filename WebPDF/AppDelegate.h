@@ -16,9 +16,15 @@
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
+- (void)insertNewObject:(NSString*) title
+            pdfFilename: (NSString*) pdfFilename
+          imageFilename: (NSString*) imageFilename
+              pageCount: (NSInteger) pageCount
+               fileSize: (NSString*) fileSize;
 
 @end
 

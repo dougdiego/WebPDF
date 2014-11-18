@@ -7,16 +7,17 @@
 //
 
 #import "WebViewController.h"
-#import "UIPrintPageRenderer+PDF.h"
 #import "NSString+Timestamp.h"
 #import "SVProgressHUD.h"
 #import "AppDelegate.h"
 #import "UIColor+WebPDF.h"
 #import "DDLogging.h"
+//#import "WebPDFFramework.h"
+#import <WebPDFFramework/WebPDFFramework.h>
 
 #define kPaperSizeA4 CGSizeMake(595.2,841.8)
 
-@interface WebViewController () <UIWebViewDelegate,UISearchBarDelegate,NSFetchedResultsControllerDelegate>
+@interface WebViewController () <UIWebViewDelegate,UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *forwardBarButtonItem;
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
@@ -25,7 +26,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *stopBarButtonItem;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *reloadBarButtonItem;
 
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+//@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, copy) NSString *searchValue;
 @property (nonatomic) NSInteger requestCount;
 @end
@@ -264,7 +265,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark -
 #pragma mark Private
-
+/*
 -(UIImage*)captureScreen:(UIView*) viewToCapture {
     UIGraphicsBeginImageContext(viewToCapture.bounds.size);
     [viewToCapture.layer renderInContext:UIGraphicsGetCurrentContext()];
@@ -272,25 +273,13 @@
     UIGraphicsEndImageContext();
     return viewImage;
 }
+*/
 
 -(void) savePageWithTitle: (NSString*) title {
     [SVProgressHUD show];
     
-    UIPrintPageRenderer *render = [[UIPrintPageRenderer alloc] init];
-    [render addPrintFormatter:_webView.viewPrintFormatter startingAtPageAtIndex:0];
-    //increase these values according to your requirement
-    float topPadding = 10.0f;
-    float bottomPadding = 10.0f;
-    float leftPadding = 10.0f;
-    float rightPadding = 10.0f;
-    CGRect printableRect = CGRectMake(leftPadding,
-                                      topPadding,
-                                      kPaperSizeA4.width-leftPadding-rightPadding,
-                                      kPaperSizeA4.height-topPadding-bottomPadding);
-    CGRect paperRect = CGRectMake(0, 0, kPaperSizeA4.width, kPaperSizeA4.height);
-    [render setValue:[NSValue valueWithCGRect:paperRect] forKey:@"paperRect"];
-    [render setValue:[NSValue valueWithCGRect:printableRect] forKey:@"printableRect"];
-    NSData *pdfData = [render printToPDF];
+    NSData *pdfData =[_webView pdfWithSize:kPaperSizeA4];
+    
     if (pdfData) {
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -299,13 +288,14 @@
         //DDLog("Writing file to: %@", path );
         [pdfData writeToFile:path atomically: YES];
         
-        UIImage* image = [self captureScreen:self.webView];
+        UIImage* image = [self.webView captureScreenImage];
         NSData *pngData = UIImagePNGRepresentation(image);
         NSString *imageUUID = [[NSUUID UUID] UUIDString];
         NSString *filePath =  [NSString stringWithFormat:@"%@/%@.png",documentsDirectory, imageUUID];
         //DDLog("Writing file to: %@", filePath );
         [pngData writeToFile:filePath atomically:YES];
         
+        // Page Count
         NSURL *pdfURL = [NSURL fileURLWithPath:path];
         CGPDFDocumentRef pdf = CGPDFDocumentCreateWithURL((CFURLRef)pdfURL);
         NSInteger pageCount = CGPDFDocumentGetNumberOfPages(pdf);
@@ -317,14 +307,16 @@
         NSString * fileSize = [NSByteCountFormatter stringFromByteCount:size countStyle:NSByteCountFormatterCountStyleFile];
         //DDLog("fileSize: %@", fileSize);
         
-        [self insertNewObject: title pdfFilename:UUID imageFilename:imageUUID pageCount:pageCount fileSize:fileSize];
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        [appDelegate insertNewObject: title pdfFilename:UUID imageFilename:imageUUID pageCount:pageCount fileSize:fileSize];
         [SVProgressHUD showSuccessWithStatus:@"PDF Created"];
     } else {
         DDError("PDF couldnot be created");
         [SVProgressHUD showErrorWithStatus:@"Error creating PDF"];
     }
 }
-
+/*
 - (void)insertNewObject:(NSString*) title
             pdfFilename: (NSString*) pdfFilename
           imageFilename: (NSString*) imageFilename
@@ -395,5 +387,5 @@
     
     return _fetchedResultsController;
 }
-
+*/
 @end

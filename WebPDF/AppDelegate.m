@@ -32,6 +32,8 @@
     
     [self setupAppearance];
     
+    
+    
     return YES;
 }
 
@@ -51,6 +53,8 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    [self loadActionExtensionItems];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
@@ -82,6 +86,8 @@
 }
 
 - (NSManagedObjectModel *)managedObjectModel {
+    NSLog(@"managedObjectModel");
+    
     // The managed object model for the application. It is a fatal error for the application not to be able to find and load its model.
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
@@ -159,6 +165,114 @@
     NSDictionary *navbarTitleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
     
     [[UINavigationBar appearance] setTitleTextAttributes:navbarTitleTextAttributes];
+}
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark -
+#pragma mark Helper
+
+-(void) loadActionExtensionItems {
+    NSURL *storeURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.WebPDF"];
+    NSLog(@"storeURL: %@", storeURL);
+    
+    NSUserDefaults *extensionUserDefaults = [[NSUserDefaults alloc]initWithSuiteName:@"group.WebPDF"];
+    
+    NSMutableArray * items = [[extensionUserDefaults objectForKey:@"items"] mutableCopy];
+    
+    // Get Documents Directory
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    
+    NSLog(@"items: %@", items);
+    for(NSDictionary* item in items ){
+        NSLog(@"Processing item: %@", item );
+        
+        NSString* pdfFilename = [item objectForKey:@"pdfFilename"];
+        NSString* imageFilename = [item objectForKey:@"imageFilename"];
+        NSString* title = [item objectForKey:@"title"];
+        
+        NSString *destPDFPath = [NSString stringWithFormat:@"%@/%@.pdf",documentsDirectory, pdfFilename];
+        NSString *destImagePath =  [NSString stringWithFormat:@"%@/%@.png",documentsDirectory, imageFilename];
+        
+        NSString *srcPDFPath =[NSString stringWithFormat:@"%@/%@.pdf",[storeURL path], pdfFilename];
+        NSString *srcImagePath =[NSString stringWithFormat:@"%@/%@.png",[storeURL path], imageFilename];
+        
+        [self moveFileSrcPath:srcPDFPath destPath:destPDFPath];
+        [self moveFileSrcPath:srcImagePath destPath:destImagePath];
+        
+        // Page Count
+        NSURL *pdfURL = [NSURL fileURLWithPath:destPDFPath];
+        CGPDFDocumentRef pdf = CGPDFDocumentCreateWithURL((CFURLRef)pdfURL);
+        NSInteger pageCount = CGPDFDocumentGetNumberOfPages(pdf);
+        DDLog("pageCount: %@", @(pageCount));
+        
+        // Filesize
+        unsigned long long size = [[NSFileManager defaultManager] attributesOfItemAtPath:destPDFPath error:nil].fileSize;
+        DDLog("size: %@", @(size));
+        NSString * fileSize = [NSByteCountFormatter stringFromByteCount:size countStyle:NSByteCountFormatterCountStyleFile];
+        DDLog("fileSize: %@", fileSize);
+        
+        
+        [self insertNewObject: title
+                  pdfFilename:pdfFilename
+                imageFilename:imageFilename
+                    pageCount:pageCount
+                     fileSize:fileSize];
+    }
+    
+    [extensionUserDefaults removeObjectForKey:@"items"];
+}
+
+-(void) moveFileSrcPath: (NSString*) srcPath destPath: (NSString*) destPath {
+    NSLog(@"moveFileSrcPath: %@ destPath: %@", srcPath, destPath);
+    
+    NSError *error = nil;
+    
+    if([[NSFileManager defaultManager] fileExistsAtPath:srcPath]) {
+        
+        if([[NSFileManager defaultManager] copyItemAtPath:srcPath toPath:destPath error:&error] == NO) {
+            NSLog(@"Error coping file %@", error);
+        } else {
+            NSLog(@"Copied file");
+            if( [[NSFileManager defaultManager] removeItemAtPath:srcPath error:&error] == NO){
+                NSLog(@"Error deleting file %@", error);
+            } else {
+                NSLog(@"Deleted file");
+            }
+        }
+    }
+}
+
+- (void)insertNewObject:(NSString*) title
+            pdfFilename: (NSString*) pdfFilename
+          imageFilename: (NSString*) imageFilename
+              pageCount: (NSInteger) pageCount
+               fileSize: (NSString*) fileSize {
+    //DDLog("insertNewObject: %@ filename: %@ imageFilename: %@", title, pdfFilename, imageFilename);
+    
+    //NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+    //NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
+    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"Page" inManagedObjectContext:_managedObjectContext];
+    
+    // If appropriate, configure the new managed object.
+    // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
+    [newManagedObject setValue:[NSDate date]  forKey:@"created"];
+    [newManagedObject setValue:title  forKey:@"title"];
+    [newManagedObject setValue:pdfFilename  forKey:@"pdfFilename"];
+    [newManagedObject setValue:imageFilename  forKey:@"imageFilename"];
+    [newManagedObject setValue:fileSize  forKey:@"fileSize"];
+    [newManagedObject setValue:[NSNumber numberWithInteger:pageCount]  forKey:@"pageCount"];
+    // Save the context.
+    NSError *error = nil;
+    if (![_managedObjectContext save:&error]) {
+        // Replace this implementation with code to handle the error appropriately.
+        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+        DDError("Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
 }
 
 @end
