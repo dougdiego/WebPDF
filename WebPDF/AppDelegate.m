@@ -32,8 +32,6 @@
     
     [self setupAppearance];
     
-    
-    
     return YES;
 }
 
@@ -175,31 +173,38 @@
 #pragma mark Helper
 
 -(void) loadActionExtensionItems {
+    
+    // Get Shared Directory
     NSURL *storeURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.WebPDF"];
-    NSLog(@"storeURL: %@", storeURL);
+    //DDLog("storeURL: %@", storeURL);
     
+    // Get current list of items from shared defaults
     NSUserDefaults *extensionUserDefaults = [[NSUserDefaults alloc]initWithSuiteName:@"group.WebPDF"];
-    
     NSMutableArray * items = [[extensionUserDefaults objectForKey:@"items"] mutableCopy];
+    //DDLog("items: %@", items);
     
     // Get Documents Directory
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     
-    NSLog(@"items: %@", items);
+    // If there are any items, then process them
     for(NSDictionary* item in items ){
-        NSLog(@"Processing item: %@", item );
+        //DDLog("Processing item: %@", item );
         
+        // Load meta data
         NSString* pdfFilename = [item objectForKey:@"pdfFilename"];
         NSString* imageFilename = [item objectForKey:@"imageFilename"];
         NSString* title = [item objectForKey:@"title"];
         
+        // Destination files
         NSString *destPDFPath = [NSString stringWithFormat:@"%@/%@.pdf",documentsDirectory, pdfFilename];
         NSString *destImagePath =  [NSString stringWithFormat:@"%@/%@.png",documentsDirectory, imageFilename];
         
+        // Source files
         NSString *srcPDFPath =[NSString stringWithFormat:@"%@/%@.pdf",[storeURL path], pdfFilename];
         NSString *srcImagePath =[NSString stringWithFormat:@"%@/%@.png",[storeURL path], imageFilename];
         
+        // Move files from shared directory to documents directory
         [self moveFileSrcPath:srcPDFPath destPath:destPDFPath];
         [self moveFileSrcPath:srcImagePath destPath:destImagePath];
         
@@ -207,15 +212,15 @@
         NSURL *pdfURL = [NSURL fileURLWithPath:destPDFPath];
         CGPDFDocumentRef pdf = CGPDFDocumentCreateWithURL((CFURLRef)pdfURL);
         NSInteger pageCount = CGPDFDocumentGetNumberOfPages(pdf);
-        DDLog("pageCount: %@", @(pageCount));
+        //DDLog("pageCount: %@", @(pageCount));
         
         // Filesize
         unsigned long long size = [[NSFileManager defaultManager] attributesOfItemAtPath:destPDFPath error:nil].fileSize;
-        DDLog("size: %@", @(size));
+        //DDLog("size: %@", @(size));
         NSString * fileSize = [NSByteCountFormatter stringFromByteCount:size countStyle:NSByteCountFormatterCountStyleFile];
-        DDLog("fileSize: %@", fileSize);
+        //DDLog("fileSize: %@", fileSize);
         
-        
+        // Add new page to database
         [self insertNewObject: title
                   pdfFilename:pdfFilename
                 imageFilename:imageFilename
@@ -223,24 +228,25 @@
                      fileSize:fileSize];
     }
     
+    // Clear all defaults after processed
     [extensionUserDefaults removeObjectForKey:@"items"];
 }
 
 -(void) moveFileSrcPath: (NSString*) srcPath destPath: (NSString*) destPath {
-    NSLog(@"moveFileSrcPath: %@ destPath: %@", srcPath, destPath);
+    //DDLog("moveFileSrcPath: %@ destPath: %@", srcPath, destPath);
     
     NSError *error = nil;
     
     if([[NSFileManager defaultManager] fileExistsAtPath:srcPath]) {
         
         if([[NSFileManager defaultManager] copyItemAtPath:srcPath toPath:destPath error:&error] == NO) {
-            NSLog(@"Error coping file %@", error);
+            DDError("Error coping file %@", error);
         } else {
-            NSLog(@"Copied file");
+            //DDLog(@"Copied file");
             if( [[NSFileManager defaultManager] removeItemAtPath:srcPath error:&error] == NO){
-                NSLog(@"Error deleting file %@", error);
+                DDError("Error deleting file %@", error);
             } else {
-                NSLog(@"Deleted file");
+                //DDLog("Deleted file");
             }
         }
     }
@@ -253,8 +259,6 @@
                fileSize: (NSString*) fileSize {
     //DDLog("insertNewObject: %@ filename: %@ imageFilename: %@", title, pdfFilename, imageFilename);
     
-    //NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
-    //NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
     NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"Page" inManagedObjectContext:_managedObjectContext];
     
     // If appropriate, configure the new managed object.
@@ -265,6 +269,7 @@
     [newManagedObject setValue:imageFilename  forKey:@"imageFilename"];
     [newManagedObject setValue:fileSize  forKey:@"fileSize"];
     [newManagedObject setValue:[NSNumber numberWithInteger:pageCount]  forKey:@"pageCount"];
+    
     // Save the context.
     NSError *error = nil;
     if (![_managedObjectContext save:&error]) {

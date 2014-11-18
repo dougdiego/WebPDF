@@ -8,9 +8,8 @@
 
 #import "ActionViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
-//#import "WebPDFFramework.h"
-//#import "SVProgressHUD.h"
 #import <WebPDFFramework/WebPDFFramework.h>
+
 #define kPaperSizeA4 CGSizeMake(595.2,841.8)
 
 @interface ActionViewController () <UIWebViewDelegate>
@@ -21,17 +20,10 @@
 
 @end
 
-// https://developer.apple.com/library/ios/documentation/General/Conceptual/ExtensibilityPG/ExtensionScenarios.html
-// http://stackoverflow.com/questions/26248714/uiwebview-ios-8-action-extension-crash-in-ios-8-mobile-safari
-// https://github.com/seviu/share-extension-ios-tutorial
-// http://stackoverflow.com/questions/24641768/accessing-core-data-sql-database-in-ios-8-extension-sharing-data-between-app-an
-
 @implementation ActionViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    //self.title = @"Save to PDF";
     
     _webView.delegate = self;
     
@@ -95,9 +87,9 @@
 
 - (IBAction)downloadButtonPressed:(id)sender {
     
+    // Get Shared Directory
     NSURL *storeURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.WebPDF"];
-    NSLog(@"storeURL: %@", storeURL);
-    //storeURL = [storeURL URLByAppendingPathComponent:@"db.sqlite"];
+    //NSLog(@"storeURL: %@", storeURL);
     
     NSString * title = [_webView stringByEvaluatingJavaScriptFromString:@"document.title"];
     
@@ -107,42 +99,37 @@
     NSData *pdfData =[_webView pdfWithSize:kPaperSizeA4];
     
     if (pdfData) {
-        //NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        //NSString *documentsDirectory = [paths objectAtIndex:0];
+        // Save PDF to shared Directory
         NSString *UUID = [[NSUUID UUID] UUIDString];
         NSURL *pdfURL = [storeURL URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.pdf", UUID]];
-        NSLog(@"Writing file to: %@", pdfURL );
+        //NSLog(@"Writing file to: %@", pdfURL );
         [pdfData writeToURL:pdfURL atomically:YES];
         
+        // Save Image to shared Directory
         UIImage* image = [self.webView captureScreenImage];
         NSData *pngData = UIImagePNGRepresentation(image);
         NSString *imageUUID = [[NSUUID UUID] UUIDString];
-        //NSString *filePath =  [NSString stringWithFormat:@"%@/%@.png",documentsDirectory, imageUUID];
-        //DDLog("Writing file to: %@", filePath );
-        //[pngData writeToFile:filePath atomically:YES];
         NSURL *imageURL = [storeURL URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", imageUUID]];
-        NSLog(@"Writing file to: %@", imageURL );
+        //NSLog(@"Writing file to: %@", imageURL );
         [pngData writeToURL:imageURL atomically:YES];
         
         
         //[SVProgressHUD showSuccessWithStatus:@"PDF Created"];
         
-        
+        // Get current list of items from shared defaults
         NSUserDefaults *extensionUserDefaults = [[NSUserDefaults alloc]initWithSuiteName:@"group.WebPDF"];
-        
         NSArray * currentItems = [extensionUserDefaults objectForKey:@"items"];
+        //NSLog(@"currentItems: %@", currentItems);
         
-        NSLog(@"currentItems: %@", currentItems);
-        
+        // Append existing defaults to new defaults
         NSMutableArray * items = [NSMutableArray array];
-        
         if( currentItems ) {
             items = [NSMutableArray arrayWithArray:currentItems];
         }
         
+        // Add new default and save
         [items addObject:@{@"pdfFilename":UUID, @"imageFilename":imageUUID, @"title": title }];
-        NSLog(@"items: %@", items);
-        
+        //NSLog(@"items: %@", items);
         [extensionUserDefaults setObject:items forKey:@"items"];
         [extensionUserDefaults synchronize];
         

@@ -19,13 +19,13 @@
                             <navigationBar contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="NOA-Dm-cuz">
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                 <items>
-                                    <navigationItem title="Save to PDF" id="3HJ-uW-3hn">
-                                        <barButtonItem key="leftBarButtonItem" title="Cancel" style="done" id="WYi-yp-eM6">
+                                    <navigationItem title="Save to WebPDF" id="3HJ-uW-3hn">
+                                        <barButtonItem key="leftBarButtonItem" image="navbar_close" style="done" id="WYi-yp-eM6">
                                             <connections>
                                                 <action selector="done" destination="ObA-dk-sSI" id="Qdu-qn-U6V"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" image="icon-download" id="DUr-Fu-zv8">
+                                        <barButtonItem key="rightBarButtonItem" image="navbar_download" id="DUr-Fu-zv8">
                                             <connections>
                                                 <action selector="downloadButtonPressed:" destination="ObA-dk-sSI" id="Gj5-eE-pfh"/>
                                             </connections>
@@ -63,7 +63,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon-download" width="37" height="37"/>
+        <image name="navbar_close" width="22" height="22"/>
+        <image name="navbar_download" width="22" height="22"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
