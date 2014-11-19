@@ -1048,7 +1048,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = WebPDF/WebPDF.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/WebPDF/PrefixHeader.pch";
 				INFOPLIST_FILE = WebPDF/Info.plist;
@@ -1105,6 +1105,7 @@
 				915F5FC91A1B0A1700DF7089 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		915F5FCE1A1B0A1700DF7089 /* Build configuration list for PBXNativeTarget "WebPDFFrameworkTests" */ = {
 			isa = XCConfigurationList;
@@ -1113,6 +1114,7 @@
 				915F5FCB1A1B0A1700DF7089 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		91638B9A1A1909C000B7FFCA /* Build configuration list for PBXNativeTarget "ActionExtension" */ = {
 			isa = XCConfigurationList;

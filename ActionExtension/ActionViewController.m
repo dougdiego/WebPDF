@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *downloadBarButtonItem;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -72,23 +73,26 @@
 #pragma mark UIWebViewDelegate
 
 - (void)webViewDidFinishLoad:(UIWebView *)awebView {
-    
+    /*
     if (_webView.isLoading) {
-        return;
+        //return;
     }
-    
+    _webView.hidden = NO;
     self.downloadBarButtonItem.enabled = YES;
+     */
+    _activityIndicator.hidden = YES;
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
+    //_webView.hidden = YES;
+    //self.downloadBarButtonItem.enabled = NO;
     
-    self.downloadBarButtonItem.enabled = NO;
 }
 
 - (IBAction)downloadButtonPressed:(id)sender {
     
-    _webView.hidden = YES;
-    _statusLabel.text = @"Saving to WebPDF";
+    //_webView.hidden = YES;
+    //_statusLabel.text = @"Saving to WebPDF";
     
     // Get Shared Directory
     NSURL *storeURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.WebPDF"];
@@ -138,6 +142,8 @@
         NSLog(@"PDF couldnot be created");
         _statusLabel.text = @"Unable to save to WebPDF";
     }
+    
+    _webView.hidden = YES;
     
     // Show confirmation message then close window
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

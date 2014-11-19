@@ -34,7 +34,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rfz-6y-gIh">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rfz-6y-gIh">
                                 <rect key="frame" x="16" y="254" width="288" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="4oG-HM-fvY"/>
@@ -47,14 +47,23 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="464"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="OLi-DP-M37">
+                                <rect key="frame" x="150" y="255" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="OoH-2N-CZ9"/>
+                                    <constraint firstAttribute="width" constant="20" id="oAh-Ye-N5R"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="NOA-Dm-cuz" secondAttribute="trailing" id="A05-Pj-hrr"/>
+                            <constraint firstAttribute="centerY" secondItem="OLi-DP-M37" secondAttribute="centerY" constant="-1" id="Bdq-dV-Bvd"/>
                             <constraint firstItem="LP8-Fb-cwv" firstAttribute="trailing" secondItem="NOA-Dm-cuz" secondAttribute="trailing" id="C3B-cD-cpG"/>
                             <constraint firstItem="NOA-Dm-cuz" firstAttribute="leading" secondItem="zMn-AG-sqS" secondAttribute="leading" id="HxO-8t-aoh"/>
                             <constraint firstItem="LP8-Fb-cwv" firstAttribute="leading" secondItem="NOA-Dm-cuz" secondAttribute="leading" id="MnJ-pR-pLg"/>
                             <constraint firstAttribute="centerY" secondItem="rfz-6y-gIh" secondAttribute="centerY" constant="-0.5" id="PkU-J3-rX5"/>
+                            <constraint firstAttribute="centerX" secondItem="OLi-DP-M37" secondAttribute="centerX" id="SSn-B7-YWI"/>
                             <constraint firstItem="LP8-Fb-cwv" firstAttribute="bottom" secondItem="n38-gi-rB5" secondAttribute="top" id="SkP-2D-hs5"/>
                             <constraint firstItem="rfz-6y-gIh" firstAttribute="trailing" secondItem="zMn-AG-sqS" secondAttribute="trailingMargin" id="XZs-qW-rKz"/>
                             <constraint firstItem="LP8-Fb-cwv" firstAttribute="top" secondItem="NOA-Dm-cuz" secondAttribute="bottom" id="oow-Bp-IMG"/>
@@ -65,6 +74,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="528"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="OLi-DP-M37" id="w4o-Nv-i6K"/>
                         <outlet property="downloadBarButtonItem" destination="DUr-Fu-zv8" id="PiB-ub-Rfj"/>
                         <outlet property="statusLabel" destination="rfz-6y-gIh" id="xOr-dy-sfz"/>
                         <outlet property="view" destination="zMn-AG-sqS" id="Qma-de-2ek"/>

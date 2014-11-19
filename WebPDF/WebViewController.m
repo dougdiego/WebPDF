@@ -44,7 +44,7 @@
     self.navigationItem.leftBarButtonItem = closeButton;
     
     UISearchBar *searchBar = [[UISearchBar alloc] init];
-    searchBar.keyboardType = UIKeyboardTypeURL;
+    searchBar.keyboardType = UIKeyboardTypeWebSearch;
     searchBar.returnKeyType = UIReturnKeyGo;
     searchBar.delegate = self;
     self.navigationItem.titleView = searchBar;
