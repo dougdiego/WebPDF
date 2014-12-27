@@ -31,9 +31,9 @@
 		91A6F30E1A0E72600066A9B6 /* SettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A6F30D1A0E72600066A9B6 /* SettingsTableViewCell.m */; };
 		91A6F3171A0F21650066A9B6 /* WebPDFUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A6F3161A0F21650066A9B6 /* WebPDFUtils.m */; };
 		91A6F31A1A0F2BEF0066A9B6 /* HTMLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A6F3191A0F2BEF0066A9B6 /* HTMLViewController.m */; };
-		91A6F31D1A0F2F000066A9B6 /* license.html in Resources */ = {isa = PBXBuildFile; fileRef = 91A6F31C1A0F2F000066A9B6 /* license.html */; };
 		91A6F31F1A0F31010066A9B6 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 91A6F31E1A0F31010066A9B6 /* about.html */; };
 		91A6F3221A0FC7020066A9B6 /* new.html in Resources */ = {isa = PBXBuildFile; fileRef = 91A6F3211A0FC7020066A9B6 /* new.html */; };
+		91B9EC4C1A39616500BCBCEA /* Licenses.plist in Resources */ = {isa = PBXBuildFile; fileRef = 91B9EC4B1A39616500BCBCEA /* Licenses.plist */; };
 		91D91E711A09CC2A00A89F80 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D91E701A09CC2A00A89F80 /* main.m */; };
 		91D91E741A09CC2A00A89F80 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D91E731A09CC2A00A89F80 /* AppDelegate.m */; };
 		91D91E771A09CC2A00A89F80 /* WebPDF.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91D91E751A09CC2A00A89F80 /* WebPDF.xcdatamodeld */; };
@@ -147,10 +147,10 @@
 		91A6F3161A0F21650066A9B6 /* WebPDFUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebPDFUtils.m; sourceTree = "<group>"; };
 		91A6F3181A0F2BEF0066A9B6 /* HTMLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLViewController.h; sourceTree = "<group>"; };
 		91A6F3191A0F2BEF0066A9B6 /* HTMLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLViewController.m; sourceTree = "<group>"; };
-		91A6F31C1A0F2F000066A9B6 /* license.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = license.html; sourceTree = "<group>"; };
 		91A6F31E1A0F31010066A9B6 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
 		91A6F3201A0FC57B0066A9B6 /* DDLogging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDLogging.h; sourceTree = "<group>"; };
 		91A6F3211A0FC7020066A9B6 /* new.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = new.html; sourceTree = "<group>"; };
+		91B9EC4B1A39616500BCBCEA /* Licenses.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Licenses.plist; sourceTree = "<group>"; };
 		91D91E6B1A09CC2A00A89F80 /* WebPDF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebPDF.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D91E6F1A09CC2A00A89F80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		91D91E701A09CC2A00A89F80 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -321,7 +321,6 @@
 		91A6F31B1A0F2EEB0066A9B6 /* HTML */ = {
 			isa = PBXGroup;
 			children = (
-				91A6F31C1A0F2F000066A9B6 /* license.html */,
 				91A6F31E1A0F31010066A9B6 /* about.html */,
 				91A6F3211A0FC7020066A9B6 /* new.html */,
 			);
@@ -377,6 +376,7 @@
 				91D91E731A09CC2A00A89F80 /* AppDelegate.m */,
 				91D91E7E1A09CC2A00A89F80 /* Main.storyboard */,
 				91D91E831A09CC2A00A89F80 /* LaunchScreen.xib */,
+				91B9EC4B1A39616500BCBCEA /* Licenses.plist */,
 				91D91E811A09CC2A00A89F80 /* Images.xcassets */,
 				91D91E751A09CC2A00A89F80 /* WebPDF.xcdatamodeld */,
 				91D91E6E1A09CC2A00A89F80 /* Supporting Files */,
@@ -636,7 +636,7 @@
 			files = (
 				91D91E801A09CC2A00A89F80 /* Main.storyboard in Resources */,
 				91D91E851A09CC2A00A89F80 /* LaunchScreen.xib in Resources */,
-				91A6F31D1A0F2F000066A9B6 /* license.html in Resources */,
+				91B9EC4C1A39616500BCBCEA /* Licenses.plist in Resources */,
 				91A6F31F1A0F31010066A9B6 /* about.html in Resources */,
 				91D91E821A09CC2A00A89F80 /* Images.xcassets in Resources */,
 				91A6F3221A0FC7020066A9B6 /* new.html in Resources */,

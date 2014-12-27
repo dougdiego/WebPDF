@@ -10,10 +10,12 @@
 #import "SettingsTableViewCell.h"
 #import "HTMLViewController.h"
 #import "DDLogging.h"
+#import "DDLicensesViewController.h"
 
 @interface SettingsViewController()
 @property (nonatomic,strong) NSArray* items;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic,strong) DDLicensesViewController * ddLicensesViewController;
 @end
 
 @implementation SettingsViewController
@@ -53,9 +55,7 @@
         controller.title = [_items objectAtIndex:indexPath.row];
         if(indexPath.row==0){
             controller.filename = [[NSBundle mainBundle] pathForResource:@"about" ofType:@"html"];
-        } else if( indexPath.row == 1){
-            controller.filename = [[NSBundle mainBundle] pathForResource:@"license" ofType:@"html"];
-        }
+        } 
         [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
     }
 }
@@ -68,6 +68,50 @@
 -(void) closeButtonPressed:  (id) sender {
     // DDLog("closeButtonPressed");
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void) backButtonPressed:  (id) sender {
+    DDLog("backButtonPressed");
+    [self.navigationController popoverPresentationController];
+}
+
+-(void) showLicenses {
+    // Load Licenses1 from a plist
+    NSString *path = [[NSBundle mainBundle] pathForResource: @"Licenses" ofType:@"plist"];
+    NSArray * licenses = [[NSArray alloc] initWithContentsOfFile:path];
+    NSArray * ddLicenses = [DDLicense licenseArrayFromDictionaryArray: licenses];
+    
+    if(!_ddLicensesViewController){
+        _ddLicensesViewController= [[DDLicensesViewController alloc] init];
+    }
+    _ddLicensesViewController.title = @"Licenses";
+    _ddLicensesViewController.licenses = ddLicenses;
+    
+    
+    // Optional: license list font
+    _ddLicensesViewController.licenseListFont = [UIFont fontWithName:@"HelveticaNeue" size:17];
+    _ddLicensesViewController.licenseListFontColor = [UIColor darkGrayColor];
+    
+    // Optional: license font
+    _ddLicensesViewController.licenseFont = [UIFont fontWithName:@"Courier" size:17];
+    
+    
+//    _ddLicensesViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navbar_back"]
+//                                                                             style:UIBarButtonItemStylePlain
+//                                                                            target:self
+//                                                                            action:@selector(backButtonPressed:)];
+    
+    
+    [self.navigationController pushViewController:_ddLicensesViewController animated:YES];
+    
+//    // Add close button to navigation bar
+//    vc.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop
+//                                                                                        target:self
+//                                                                                        action:@selector(closeButtonPressed:)];
+//    
+//    // Put DDLicensesViewController in a UINavigationController and show
+//    UINavigationController * nvc = [[UINavigationController alloc] initWithRootViewController:vc];
+//    [self presentViewController:nvc animated:YES completion:nil];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -93,8 +137,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    [self performSegueWithIdentifier:@"HTMLSegue" sender:self];
+    if( indexPath.row == 0) {
+        [self performSegueWithIdentifier:@"HTMLSegue" sender:self];
+    } else if(indexPath.row == 1){
+        [self showLicenses];
+    }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

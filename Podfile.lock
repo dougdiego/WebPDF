@@ -1,10 +1,24 @@
 PODS:
-  - SVProgressHUD (1.0)
+  - DDLicenseViewController (0.1.0)
+  - SVProgressHUD (1.1.1)
 
 DEPENDENCIES:
-  - SVProgressHUD (~> 1.0)
+  - DDLicenseViewController (from `../DDLicenseViewController`)
+  - SVProgressHUD (from `https://github.com/TransitApp/SVProgressHUD.git`)
+
+EXTERNAL SOURCES:
+  DDLicenseViewController:
+    :path: ../DDLicenseViewController
+  SVProgressHUD:
+    :git: https://github.com/TransitApp/SVProgressHUD.git
+
+CHECKOUT OPTIONS:
+  SVProgressHUD:
+    :commit: 70bab4728e6f647f802689b16d83fc3755a284e0
+    :git: https://github.com/TransitApp/SVProgressHUD.git
 
 SPEC CHECKSUMS:
-  SVProgressHUD: 5034c6e22b8c2ca3e09402e48d41ed0340aa1c50
+  DDLicenseViewController: 1e0f1860dddf660f559714e00090ae2f6ac36d10
+  SVProgressHUD: 74db8326b5973869594a6e8b139f486e3500a488
 
-COCOAPODS: 0.35.0.rc2
+COCOAPODS: 0.35.0
