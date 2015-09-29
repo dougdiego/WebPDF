@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "F6366B1D087879391A5B80DCFDE5CBCD555DB096",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "F6366B1D087879391A5B80DCFDE5CBCD555DB096" : 0,
+    "B32B27F82053003C8875B031DF89F6BCE6EA1D40" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "52ABDD3D-A94A-4C32-A860-A7CB00EA6BA8",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "F6366B1D087879391A5B80DCFDE5CBCD555DB096" : "WebPDF",
+    "B32B27F82053003C8875B031DF89F6BCE6EA1D40" : "DDLicenseViewController"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "WebPDF",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "WebPDF.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/dougdiego\/DDLicenseViewController.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B32B27F82053003C8875B031DF89F6BCE6EA1D40"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/dougdiego\/WebPDF.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F6366B1D087879391A5B80DCFDE5CBCD555DB096"
+    }
+  ]
+}
