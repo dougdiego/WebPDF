@@ -84,7 +84,7 @@
 }
 
 - (NSManagedObjectModel *)managedObjectModel {
-    NSLog(@"managedObjectModel");
+    //NSLog(@"managedObjectModel");
     
     // The managed object model for the application. It is a fatal error for the application not to be able to find and load its model.
     if (_managedObjectModel != nil) {
@@ -134,7 +134,7 @@
     if (!coordinator) {
         return nil;
     }
-    _managedObjectContext = [[NSManagedObjectContext alloc] init];
+    _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
     [_managedObjectContext setPersistentStoreCoordinator:coordinator];
     return _managedObjectContext;
 }
@@ -158,7 +158,7 @@
     [[UINavigationBar appearance] setBarTintColor:[UIColor mainColor]];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     NSDictionary *navbarTitleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
     
