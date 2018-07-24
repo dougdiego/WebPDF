@@ -1,6 +1,8 @@
 source 'https://github.com/CocoaPods/Specs.git'
-link_with ['WebPDF', 'WebPDFTests']
 
-platform :ios, '8.0'
-pod 'SVProgressHUD', :git => 'https://github.com/TransitApp/SVProgressHUD.git'
-pod 'DDLicenseViewController' , :path => '../DDLicenseViewController'
+platform :ios, '11.0'
+
+target "WebPDF" do
+	pod 'SVProgressHUD'
+	pod 'DDLicenseViewController' , :path => '../DDLicenseViewController'
+end
