@@ -315,6 +315,7 @@
         DDError("PDF couldnot be created");
         [SVProgressHUD showErrorWithStatus:@"Error creating PDF"];
     }
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 /*
 - (void)insertNewObject:(NSString*) title

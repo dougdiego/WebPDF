@@ -24,6 +24,14 @@
 		91638B941A1909C000B7FFCA /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91638B931A1909C000B7FFCA /* MainInterface.storyboard */; };
 		91638B971A1909C000B7FFCA /* ActionExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 91638B8C1A1909C000B7FFCA /* ActionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		91638B9D1A1909E400B7FFCA /* ActionExtensionImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91638B9C1A1909E400B7FFCA /* ActionExtensionImages.xcassets */; };
+		917DC5752625D21600B7886D /* DDLicenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 917DC56F2625D21600B7886D /* DDLicenseViewController.m */; };
+		917DC5762625D21600B7886D /* DDLicense.m in Sources */ = {isa = PBXBuildFile; fileRef = 917DC5732625D21600B7886D /* DDLicense.m */; };
+		917DC5772625D21600B7886D /* DDLicensesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 917DC5742625D21600B7886D /* DDLicensesViewController.m */; };
+		917DC59D2625D8AF00B7886D /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 917DC5932625D8AF00B7886D /* SVRadialGradientLayer.m */; };
+		917DC59E2625D8AF00B7886D /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 917DC5962625D8AF00B7886D /* SVProgressAnimatedView.m */; };
+		917DC59F2625D8AF00B7886D /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 917DC5992625D8AF00B7886D /* SVProgressHUD.m */; };
+		917DC5A02625D8AF00B7886D /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 917DC59A2625D8AF00B7886D /* SVIndefiniteAnimatedView.m */; };
+		917DC5A12625D8AF00B7886D /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 917DC59B2625D8AF00B7886D /* SVProgressHUD.bundle */; };
 		91A6F2F61A09E68C0066A9B6 /* NSString+Timestamp.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A6F2F51A09E68C0066A9B6 /* NSString+Timestamp.m */; };
 		91A6F2F91A09EDBE0066A9B6 /* PageListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A6F2F81A09EDBE0066A9B6 /* PageListTableViewCell.m */; };
 		91A6F30B1A0E6B1A0066A9B6 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A6F30A1A0E6B1A0066A9B6 /* SettingsViewController.m */; };
@@ -43,7 +51,6 @@
 		91D91E851A09CC2A00A89F80 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91D91E831A09CC2A00A89F80 /* LaunchScreen.xib */; };
 		91D91E911A09CC2A00A89F80 /* WebPDFTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D91E901A09CC2A00A89F80 /* WebPDFTests.m */; };
 		91D91E9F1A09CCBA00A89F80 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D91E9D1A09CCBA00A89F80 /* WebViewController.m */; };
-		D4D39E858B5E8E3E53E688A3 /* libPods-WebPDF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C6361CBEE582D17D7766284B /* libPods-WebPDF.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,7 +117,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		41157FC46B53632388D3A5AC /* Pods-WebPDF.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WebPDF.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WebPDF/Pods-WebPDF.debug.xcconfig"; sourceTree = "<group>"; };
 		915F5FAF1A1B0A1700DF7089 /* WebPDFFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WebPDFFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		915F5FB21A1B0A1700DF7089 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		915F5FB31A1B0A1700DF7089 /* WebPDFFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebPDFFramework.h; sourceTree = "<group>"; };
@@ -130,6 +136,22 @@
 		91638B9C1A1909E400B7FFCA /* ActionExtensionImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ActionExtensionImages.xcassets; sourceTree = "<group>"; };
 		91638B9E1A190CA400B7FFCA /* WebPDF.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = WebPDF.entitlements; sourceTree = "<group>"; };
 		91638B9F1A190CCE00B7FFCA /* ActionExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ActionExtension.entitlements; sourceTree = "<group>"; };
+		917DC56F2625D21600B7886D /* DDLicenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDLicenseViewController.m; path = DDLicensesViewController/DDLicenseViewController.m; sourceTree = "<group>"; };
+		917DC5702625D21600B7886D /* DDLicense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDLicense.h; path = DDLicensesViewController/DDLicense.h; sourceTree = "<group>"; };
+		917DC5712625D21600B7886D /* DDLicenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDLicenseViewController.h; path = DDLicensesViewController/DDLicenseViewController.h; sourceTree = "<group>"; };
+		917DC5722625D21600B7886D /* DDLicensesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDLicensesViewController.h; path = DDLicensesViewController/DDLicensesViewController.h; sourceTree = "<group>"; };
+		917DC5732625D21600B7886D /* DDLicense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDLicense.m; path = DDLicensesViewController/DDLicense.m; sourceTree = "<group>"; };
+		917DC5742625D21600B7886D /* DDLicensesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDLicensesViewController.m; path = DDLicensesViewController/DDLicensesViewController.m; sourceTree = "<group>"; };
+		917DC5932625D8AF00B7886D /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
+		917DC5942625D8AF00B7886D /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		917DC5952625D8AF00B7886D /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		917DC5962625D8AF00B7886D /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressAnimatedView.m; sourceTree = "<group>"; };
+		917DC5972625D8AF00B7886D /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		917DC5982625D8AF00B7886D /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
+		917DC5992625D8AF00B7886D /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		917DC59A2625D8AF00B7886D /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		917DC59B2625D8AF00B7886D /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		917DC59C2625D8AF00B7886D /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
 		91A6F2F41A09E68C0066A9B6 /* NSString+Timestamp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Timestamp.h"; sourceTree = "<group>"; };
 		91A6F2F51A09E68C0066A9B6 /* NSString+Timestamp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Timestamp.m"; sourceTree = "<group>"; };
 		91A6F2F71A09EDBE0066A9B6 /* PageListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageListTableViewCell.h; sourceTree = "<group>"; };
@@ -169,8 +191,6 @@
 		91D91E9B1A09CCBA00A89F80 /* UIPrintPageRenderer+PDF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIPrintPageRenderer+PDF.m"; path = "../WebPDF/UIPrintPageRenderer+PDF.m"; sourceTree = "<group>"; };
 		91D91E9C1A09CCBA00A89F80 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		91D91E9D1A09CCBA00A89F80 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
-		C6361CBEE582D17D7766284B /* libPods-WebPDF.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WebPDF.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C86A6B7B0147C9825A6C073B /* Pods-WebPDF.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WebPDF.release.xcconfig"; path = "Pods/Target Support Files/Pods-WebPDF/Pods-WebPDF.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,7 +222,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				915F5FC61A1B0A1700DF7089 /* WebPDFFramework.framework in Frameworks */,
-				D4D39E858B5E8E3E53E688A3 /* libPods-WebPDF.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,15 +235,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		704B2188BAED936024A3337D /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				41157FC46B53632388D3A5AC /* Pods-WebPDF.debug.xcconfig */,
-				C86A6B7B0147C9825A6C073B /* Pods-WebPDF.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		915F5FB01A1B0A1700DF7089 /* WebPDFFramework */ = {
 			isa = PBXGroup;
 			children = (
@@ -285,6 +295,37 @@
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
+		};
+		917DC56E2625D1EB00B7886D /* DDLicensesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				917DC5702625D21600B7886D /* DDLicense.h */,
+				917DC5732625D21600B7886D /* DDLicense.m */,
+				917DC5722625D21600B7886D /* DDLicensesViewController.h */,
+				917DC5742625D21600B7886D /* DDLicensesViewController.m */,
+				917DC5712625D21600B7886D /* DDLicenseViewController.h */,
+				917DC56F2625D21600B7886D /* DDLicenseViewController.m */,
+			);
+			name = DDLicensesViewController;
+			sourceTree = "<group>";
+		};
+		917DC5922625D8AF00B7886D /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				917DC5932625D8AF00B7886D /* SVRadialGradientLayer.m */,
+				917DC5942625D8AF00B7886D /* SVIndefiniteAnimatedView.h */,
+				917DC5952625D8AF00B7886D /* SVProgressHUD.h */,
+				917DC5962625D8AF00B7886D /* SVProgressAnimatedView.m */,
+				917DC5972625D8AF00B7886D /* SVProgressHUD-Prefix.pch */,
+				917DC5982625D8AF00B7886D /* SVRadialGradientLayer.h */,
+				917DC5992625D8AF00B7886D /* SVProgressHUD.m */,
+				917DC59A2625D8AF00B7886D /* SVIndefiniteAnimatedView.m */,
+				917DC59B2625D8AF00B7886D /* SVProgressHUD.bundle */,
+				917DC59C2625D8AF00B7886D /* SVProgressAnimatedView.h */,
+			);
+			name = SVProgressHUD;
+			path = Libs/SVProgressHUD/SVProgressHUD;
+			sourceTree = SOURCE_ROOT;
 		};
 		91A6F30F1A0E72720066A9B6 /* Controllers */ = {
 			isa = PBXGroup;
@@ -354,7 +395,6 @@
 				915F5FBF1A1B0A1700DF7089 /* WebPDFFrameworkTests */,
 				91D91E6C1A09CC2A00A89F80 /* Products */,
 				EEF824412E15B9E9211AD00E /* Frameworks */,
-				704B2188BAED936024A3337D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -373,6 +413,8 @@
 		91D91E6D1A09CC2A00A89F80 /* WebPDF */ = {
 			isa = PBXGroup;
 			children = (
+				917DC5922625D8AF00B7886D /* SVProgressHUD */,
+				917DC56E2625D1EB00B7886D /* DDLicensesViewController */,
 				91638B9E1A190CA400B7FFCA /* WebPDF.entitlements */,
 				91A6F3231A0FCE8C0066A9B6 /* Utils */,
 				91A6F31B1A0F2EEB0066A9B6 /* HTML */,
@@ -422,7 +464,6 @@
 			isa = PBXGroup;
 			children = (
 				915F5FDF1A1B129200DF7089 /* libPods.a */,
-				C6361CBEE582D17D7766284B /* libPods-WebPDF.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -502,13 +543,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 91D91E941A09CC2A00A89F80 /* Build configuration list for PBXNativeTarget "WebPDF" */;
 			buildPhases = (
-				62603D05DC30E9D72D7B6CD0 /* [CP] Check Pods Manifest.lock */,
 				91D91E671A09CC2A00A89F80 /* Sources */,
 				91D91E681A09CC2A00A89F80 /* Frameworks */,
 				91D91E691A09CC2A00A89F80 /* Resources */,
 				91638B9B1A1909C000B7FFCA /* Embed App Extensions */,
 				915F5FCD1A1B0A1700DF7089 /* Embed Frameworks */,
-				41A3F7CDCA0559A56420A722 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -517,6 +556,8 @@
 				915F5FC51A1B0A1700DF7089 /* PBXTargetDependency */,
 			);
 			name = WebPDF;
+			packageProductDependencies = (
+			);
 			productName = WebPDF;
 			productReference = 91D91E6B1A09CC2A00A89F80 /* WebPDF.app */;
 			productType = "com.apple.product-type.application";
@@ -545,7 +586,7 @@
 		91D91E631A09CC2A00A89F80 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "Doug Diego";
 				TargetAttributes = {
 					915F5FAE1A1B0A1700DF7089 = {
@@ -568,6 +609,7 @@
 					91D91E6A1A09CC2A00A89F80 = {
 						CreatedOnToolsVersion = 6.1;
 						DevelopmentTeam = V6HBKZC833;
+						LastSwiftMigration = 1240;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -582,13 +624,15 @@
 			};
 			buildConfigurationList = 91D91E661A09CC2A00A89F80 /* Build configuration list for PBXProject "WebPDF" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
 			mainGroup = 91D91E621A09CC2A00A89F80;
+			packageReferences = (
+			);
 			productRefGroup = 91D91E6C1A09CC2A00A89F80 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -630,6 +674,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				917DC5A12625D8AF00B7886D /* SVProgressHUD.bundle in Resources */,
 				91D91E801A09CC2A00A89F80 /* Main.storyboard in Resources */,
 				91D91E851A09CC2A00A89F80 /* LaunchScreen.xib in Resources */,
 				91B9EC4C1A39616500BCBCEA /* Licenses.plist in Resources */,
@@ -647,47 +692,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		41A3F7CDCA0559A56420A722 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-WebPDF/Pods-WebPDF-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/DDLicenseViewController/DDLicenseViewController.bundle",
-				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/DDLicenseViewController.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WebPDF/Pods-WebPDF-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		62603D05DC30E9D72D7B6CD0 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-WebPDF-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		915F5FAA1A1B0A1700DF7089 /* Sources */ = {
@@ -722,14 +726,21 @@
 			files = (
 				91D91E7D1A09CC2A00A89F80 /* DetailViewController.m in Sources */,
 				91A6F30E1A0E72600066A9B6 /* SettingsTableViewCell.m in Sources */,
+				917DC5772625D21600B7886D /* DDLicensesViewController.m in Sources */,
 				91D91E9F1A09CCBA00A89F80 /* WebViewController.m in Sources */,
 				91D91E7A1A09CC2A00A89F80 /* MasterViewController.m in Sources */,
+				917DC59E2625D8AF00B7886D /* SVProgressAnimatedView.m in Sources */,
 				91A6F2F91A09EDBE0066A9B6 /* PageListTableViewCell.m in Sources */,
+				917DC59F2625D8AF00B7886D /* SVProgressHUD.m in Sources */,
 				91D91E771A09CC2A00A89F80 /* WebPDF.xcdatamodeld in Sources */,
 				91D91E741A09CC2A00A89F80 /* AppDelegate.m in Sources */,
+				917DC5762625D21600B7886D /* DDLicense.m in Sources */,
 				91A6F30B1A0E6B1A0066A9B6 /* SettingsViewController.m in Sources */,
 				91A6F2F61A09E68C0066A9B6 /* NSString+Timestamp.m in Sources */,
 				91A6F31A1A0F2BEF0066A9B6 /* HTMLViewController.m in Sources */,
+				917DC59D2625D8AF00B7886D /* SVRadialGradientLayer.m in Sources */,
+				917DC5A02625D8AF00B7886D /* SVIndefiniteAnimatedView.m in Sources */,
+				917DC5752625D21600B7886D /* DDLicenseViewController.m in Sources */,
 				91A6F3171A0F21650066A9B6 /* WebPDFUtils.m in Sources */,
 				915F5FDE1A1B114400DF7089 /* UIColor+WebPDF.m in Sources */,
 				91D91E711A09CC2A00A89F80 /* main.m in Sources */,
@@ -810,7 +821,7 @@
 				);
 				INFOPLIST_FILE = WebPDFFramework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -836,7 +847,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = WebPDFFramework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -862,7 +873,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = WebPDFFrameworkTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.diego.ios.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -878,7 +889,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = WebPDFFrameworkTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.diego.ios.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -898,7 +909,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = ActionExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.diego.ios.WebPDF.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -915,7 +926,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ActionExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.diego.ios.WebPDF.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -928,6 +939,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -946,6 +958,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -953,6 +966,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -970,7 +984,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -982,6 +996,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1000,6 +1015,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1008,6 +1024,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1018,7 +1035,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1028,37 +1045,42 @@
 		};
 		91D91E951A09CC2A00A89F80 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 41157FC46B53632388D3A5AC /* Pods-WebPDF.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = WebPDF/WebPDF.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/WebPDF/PrefixHeader.pch";
 				INFOPLIST_FILE = WebPDF/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.diego.ios.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "WebPDF/WebPDF-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		91D91E961A09CC2A00A89F80 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C86A6B7B0147C9825A6C073B /* Pods-WebPDF.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = WebPDF/WebPDF.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/WebPDF/PrefixHeader.pch";
 				INFOPLIST_FILE = WebPDF/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.diego.ios.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "WebPDF/WebPDF-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
